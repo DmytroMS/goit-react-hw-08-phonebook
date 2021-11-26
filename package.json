@@ -2,7 +2,7 @@
   "name": "goit-react-hw-08-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://DmytroMS.github.io/goit-react-hw-08-phonebook",
+ 
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.15.0",
@@ -29,7 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "netlify deploy -p",
+ 
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
