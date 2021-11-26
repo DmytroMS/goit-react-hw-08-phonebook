@@ -1,0 +1,39 @@
+.list {
+    list-style: none;
+    max-width: 400px;
+    padding: 40px;
+    margin: 50px auto;
+  }
+  
+  .btn {
+    display: inline-block;
+    color: rgb(16, 17, 17);
+    border-width: 0;
+    line-height: 40px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff;
+    cursor: pointer;
+  }
+  
+ 
+  
+  .item {
+    outline: #141e30 solid 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+  }
+  
+  .name {
+    font-family: sans-serif;
+  
+    color: rgb(16, 17, 17);
+    font-size: 16px;
+    font-weight: bold;
+  }
+  

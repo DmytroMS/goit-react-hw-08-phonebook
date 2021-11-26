@@ -1,38 +1,33 @@
-
-import ContactItem from './ContactTemplate'
-import { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import ContactItem from './ContactItem';
+import s from './contacts.module.css';
 import { useSelector, useDispatch } from 'react-redux';
- import { fetchContacts } from '../../redux/contacts/contactsOperations';
-import { getVisibleContact } from '../../redux/contacts/contactsSelectors';
+import { deleteContacts, fetchContacts } from '../../redux/operations';
+import { getContactsFilter, getContactsList } from '../../redux/selectors';
+
+import { useEffect } from 'react';
 
 export default function ContactList() {
-    const contacts = useSelector(getVisibleContact);
-    const dispatch = useDispatch();
+  const filter = useSelector(getContactsFilter);
+  const contacts = useSelector(getContactsList);
 
-    useEffect(() => {
-        dispatch(fetchContacts());
-    }, [dispatch]);
+  const dispatch = useDispatch();
 
-    return (
-        <ul > {
-            contacts.map(({ id, name, number }) => (
-                <ContactItem
-                    key={id}
-                    id={id}
-                    name={name}
-                    number={number}
-          
-                />
-            ))
-        }
-       
-            </ul> 
-    );
-};
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
-ContactList.propTypes = {
-    contacts: PropTypes.array,
+  return (
+    <ul className={s.list}>
+      {contacts
+        .filter(item => item.name.toLowerCase().includes(filter.toLowerCase()))
+        .map(({ name, id, number }) => (
+          <ContactItem
+            key={id}
+            name={name}
+            number={number}
+            onDeleteContact={() => dispatch(deleteContacts(id))}
+          />
+        ))}
+    </ul>
+  );
 }
- 
-

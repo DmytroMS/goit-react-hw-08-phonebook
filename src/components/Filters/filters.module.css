@@ -1,0 +1,33 @@
+.label {
+    display: block;
+    width: 400px;
+    margin: 20px auto 0;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #456fbe;
+  }
+  
+  .input {
+    display: block;
+    width: 400px;
+    line-height: 40px;
+    padding: 0 0 0 15px;
+    margin: 30px auto 0;
+    font-family: 'Roboto', sans-serif;
+  
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    border-width: 0;
+    border-radius: 20px;
+  
+    color: rgb(19, 18, 18);
+    background-color: rgb(243, 239, 239);
+    cursor: pointer;
+  }
+  
+  .input:hover {
+    box-shadow: 4px 4px 8px 0px #456fbe;
+  }
+  

@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 80px;
+    margin-bottom: 30px;
+    background: #456fbe;
+  }
+  
+  .loader {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+  }
+  

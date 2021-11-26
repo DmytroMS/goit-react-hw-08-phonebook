@@ -1,39 +1,21 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import { Provider } from 'react-redux';
-
-import { store } from './redux/store';
-
-import './index.css';
+import ReactDOM from 'react-dom';
 import App from './App';
+import { Provider } from 'react-redux';
+import { store, persistor } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom';
+import 'modern-normalize/modern-normalize.css';
 
-ReactDom.render(
+ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
-
-
-
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import { Provider } from 'react-redux';
-// import data from './redux/store';
-// import { PersistGate } from 'redux-persist/integration/react';
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Provider store={data.store}>
-//       <PersistGate loading={null} persistor={data.persistor}>
-//         <App />
-//         </PersistGate>
-//   </Provider>
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-

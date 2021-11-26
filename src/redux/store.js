@@ -1,9 +1,7 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { logger } from 'redux-logger';
-// забираю весь редюсер как файл
-import contactReducer from './contacts/contactsReducer';
-
 import {
+  persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -11,6 +9,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+// Ссылка на локал Сторедж
+import storage from 'redux-persist/lib/storage';
+import logger from 'redux-logger';
+import contactsReducer from './reducer';
+import authReducer from './Auth/auth-slice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -20,9 +23,22 @@ const middleware = [
   }),
   logger,
 ];
+// Конфигурация локал  сторедж
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
-export const store = configureStore({
-  reducer: contactReducer,
+const store = configureStore({
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    contacts: contactsReducer,
+  },
   middleware,
-  devTools: true,
+  devTools: process.env.NODE_ENV === 'development',
 });
+
+const persistor = persistStore(store);
+
+export { store, persistor };
